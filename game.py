@@ -74,3 +74,29 @@ def dealerturn(deck, dealer_hand):
         show_result(player_hand, dealer_hand)
         print('Dealer busts. Player wins!')
         return
+
+
+# function with main game loop
+def main():
+    while True:
+        deck = new_deck()
+        player_hand = [deck.pop(), deck.pop()]
+        dealer_hand = [deck.pop(), 'x']
+
+        show_result(player_hand, dealer_hand)
+        playerturn(deck, player_hand)
+        if hand_sum(player_hand) > 21:
+            dealer_hand.remove('x')
+        if hand_sum(player_hand) <= 21:
+            dealerturn(deck, dealer_hand)
+        if hand_sum(dealer_hand) == hand_sum(player_hand):
+            print("It's a tie!")
+        if hand_sum(dealer_hand) <= 21 and hand_sum(dealer_hand) > hand_sum(player_hand):
+            print('Dealer wins!')
+        if hand_sum(player_hand) <= 21 and  hand_sum(player_hand) > hand_sum(dealer_hand):
+            print('Player wins!')
+        play_again = str(input('Do you want to play again? (y/n): '))
+        if play_again == 'n':
+            break
+
+        
