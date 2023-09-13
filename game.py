@@ -19,6 +19,7 @@ def new_deck():
     random.shuffle(deck)
     return deck
 
+
 # function to print player and dealer hand
 def show_result(player_hand, dealer_hand):
     print('Player hand:')
@@ -26,4 +27,14 @@ def show_result(player_hand, dealer_hand):
     print('Dealer hand:')
     print(dealer_hand)
 
-    
+
+# function to calculate cards values in hand 
+    def hand_sum(hand):
+    value = 0
+    for card in hand:
+        value_temp = card.split(' ')[0]
+        if value_temp in suits_values:
+            value += suits_values[value_temp]
+        else:
+            value += int(value_temp)
+    return value
